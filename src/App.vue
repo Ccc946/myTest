@@ -1,31 +1,28 @@
 <template>
   <div id="app" :class="attr">
     <div>hello world</div>
+    <div>{{data | parseTime('{y}-{m}-{d} {h}:{i}:{s} {a}')}}</div>
+    <div>{{data | formatDateTime}}</div>
   </div>
 </template>
 
 <script>
-
+import { MonitorWindowChanges } from './utils/screenSize'
 export default {
   name: 'App',
   data() {
     return {
-      attr:''
+      attr:'',
+      data: new Date() - 1000000
     }
   },
   mounted() {
     addEventListener('resize', this.onChangeSize);
     this.onChangeSize();
-
   },
   methods:{
     onChangeSize() {
-      var widthScreen = document.documentElement.clientWidth || document.body.clientWidth;
-      if(widthScreen > 900 ) {
-          this.attr = 'pc-view';
-      } else {
-        this.attr = 'moblie-view';
-      }
+      this.attr = MonitorWindowChanges();
     }
   },
   destroyed() {
@@ -35,7 +32,4 @@ export default {
 </script>
 
 <style>
-#app {
-  font-size: 25px;
-}
 </style>
