@@ -9,6 +9,10 @@ Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key])
 })
 
+import vueSwiper from 'vue-awesome-swiper'  //引入vue-awesome-swiper
+import 'swiper/dist/css/swiper.css'  //引入样式
+Vue.use(vueSwiper)  //使用插件
+
 Vue.config.productionTip = false
 
 new Vue({
