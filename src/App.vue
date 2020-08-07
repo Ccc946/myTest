@@ -4,47 +4,78 @@
       <banner :listImg="listImg"></banner>
     </div>
     <div>hello world</div>
+    <button @click="show">message</button>
+    <button @click="shows">message</button>
+    <button @click="showe">message</button>
+    <button @click="showw">message</button>
     <div>{{data | parseTime('{y}-{m}-{d} {h}:{i}:{s} {a}')}}</div>
     <div>{{data | formatDateTime}}</div>
   </div>
 </template>
 
 <script>
-import { MonitorWindowChanges } from './utils/screenSize'
+import { MonitorWindowChanges } from "./utils/screenSize";
 
-import img1 from '@/assets/banner/banner1.jpg'
-import img2 from '@/assets/banner/banner2.jpg'
-import img3 from '@/assets/banner/banner3.jpg'
+import img1 from "@/assets/banner/banner1.jpg";
+import img2 from "@/assets/banner/banner2.jpg";
+import img3 from "@/assets/banner/banner3.jpg";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    banner: () => import('@/components/banner')
+    banner: () => import("@/components/banner"),
   },
   data() {
     return {
-      attr:'',
+      attr: "",
       data: new Date() - 1000000,
       listImg: [
-        {id: 1, img_url: img1, path: 'https://github.com/'},
-        {id: 2, img_url: img2, path: 'https://baidu.com/'},
-        {id: 3, img_url: img3, path: 'https://juejin.im/'}
-      ]
-    }
+        { id: 1, img_url: img1, path: "https://github.com/" },
+        { id: 2, img_url: img2, path: "https://baidu.com/" },
+        { id: 3, img_url: img3, path: "https://juejin.im/" },
+      ],
+    };
   },
   mounted() {
-    addEventListener('resize', this.onChangeSize);
+    addEventListener("resize", this.onChangeSize);
     this.onChangeSize();
   },
-  methods:{
+  methods: {
     onChangeSize() {
       this.attr = MonitorWindowChanges();
-    }
+    },
+    show() {
+      this.$message("正常信息");
+    },
+    shows() {
+      this.$message({
+        content: "这是一个success提示",
+        time: 2000,
+        type: "success",
+        hasClose: true,
+      });
+    },
+    showe() {
+      this.$message({
+        content: "这是一个success提示",
+        time: 2000,
+        type: "error",
+        hasClose: true,
+      });
+    },
+    showw() {
+      this.$message({
+        content: "waring",
+        time: 2000,
+        type: "waring",
+        hasClose: true,
+      });
+    },
   },
   destroyed() {
-    removeEventListener('resize',this.onChangeSize);
-  }
-}
+    removeEventListener("resize", this.onChangeSize);
+  },
+};
 </script>
 
 <style>
