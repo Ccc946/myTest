@@ -25,7 +25,6 @@ import img3 from "@/assets/banner/banner3.jpg";
 export default {
   name: "App",
   components: {
-    banner: () => import("@/components/banner"),
   },
   data() {
     return {
@@ -75,8 +74,8 @@ export default {
     },
     showConfirm() {
       this.$confirm({
-        title: "123",
-        content: "hello",
+        title: "提示",
+        content: "确定要删除内容吗？",
         type: "success",
       })
         .then(() => {

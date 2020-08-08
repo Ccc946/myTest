@@ -35,7 +35,6 @@
 <script>
 export default {
   components: {
-    GlobalMask: () => import("../GlobalMask/index"),
   },
   data() {
     return {

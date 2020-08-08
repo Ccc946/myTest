@@ -13,10 +13,9 @@ import vueSwiper from 'vue-awesome-swiper'  //引入vue-awesome-swiper
 import 'swiper/dist/css/swiper.css'  //引入样式
 Vue.use(vueSwiper)  //使用插件
 
-import Message from '@/components/message'
-import Confirm from '@/components/confirm'
-Vue.prototype.$message = Message.install;
-Vue.prototype.$confirm = Confirm.install;
+//引入自定义全局组件
+import './custom-components'
+
 
 
 Vue.config.productionTip = false

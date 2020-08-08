@@ -1,7 +1,13 @@
-import Message from './components/message'
+import Vue from 'vue'
 
-const install = Vue => {
-    Vue.use(Message)
-}
+import Message from '@/components/message'
+import Confirm from '@/components/confirm'
+import Banner from '@/components/banner'
+import GlobalMask from '@/components/GlobalMask'
 
-export default install
+
+Vue.component('banner', Banner).use(Banner);
+Vue.component('global-mask', GlobalMask).use(GlobalMask);
+
+Vue.prototype.$message = Message.install;
+Vue.prototype.$confirm = Confirm.install;
