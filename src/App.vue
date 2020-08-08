@@ -10,6 +10,8 @@
     <button @click="showw">message</button>
     <div>{{data | parseTime('{y}-{m}-{d} {h}:{i}:{s} {a}')}}</div>
     <div>{{data | formatDateTime}}</div>
+
+    <button @click="showConfirm">showConfirm</button>
   </div>
 </template>
 
@@ -70,6 +72,29 @@ export default {
         type: "waring",
         hasClose: true,
       });
+    },
+    showConfirm() {
+      this.$confirm({
+        title: "123",
+        content: "hello",
+        type: "success",
+      })
+        .then(() => {
+          this.$message({
+            content: "操作成功！",
+            time: 2000,
+            type: "success",
+            hasClose: true,
+          });
+        })
+        .catch(() => {
+          this.$message({
+            content: "已取消操作!",
+            time: 2000,
+            type: "info",
+            hasClose: true,
+          });
+        });
     },
   },
   destroyed() {
