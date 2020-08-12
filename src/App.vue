@@ -12,6 +12,9 @@
     <div>{{data | formatDateTime}}</div>
 
     <button @click="showConfirm">showConfirm</button>
+    <Markdown></Markdown>
+    <showMarkdown></showMarkdown>
+    <back-top></back-top>
   </div>
 </template>
 
@@ -21,10 +24,16 @@ import { MonitorWindowChanges } from "./utils/screenSize";
 import img1 from "@/assets/banner/banner1.jpg";
 import img2 from "@/assets/banner/banner2.jpg";
 import img3 from "@/assets/banner/banner3.jpg";
+const BackTop = () => import("@/components/BackTop/index.vue");
+const Markdown = () => import("@/components/Markdown/index.vue");
+const showMarkdown = () => import("@/components/Markdown/showMarkdown.vue");
 
 export default {
   name: "App",
   components: {
+    BackTop,
+    Markdown,
+    showMarkdown
   },
   data() {
     return {
@@ -103,6 +112,9 @@ export default {
 </script>
 
 <style>
+#app {
+  height: 2000px;
+}
 .container {
   width: 60%;
 }
